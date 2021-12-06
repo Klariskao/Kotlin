@@ -1,0 +1,41 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Properties/Delegates%20how%20it%20works/Task.kt
+
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+
+class D {
+    var date: MyDate by EffectiveDate()
+}
+
+class EffectiveDate<R> : ReadWriteProperty<R, MyDate> {
+
+    var timeInMillis: Long? = null
+
+    override fun getValue(thisRef: R, property: KProperty<*>): MyDate {
+        return timeInMillis!!.toDate()
+    }
+
+    override fun setValue(thisRef: R, property: KProperty<*>, value: MyDate) {
+        timeInMillis = value.toMillis()
+    }
+}
+
+// MyDate.kt
+
+import java.util.Calendar
+
+data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int)
+
+fun MyDate.toMillis(): Long {
+	val c = Calendar.getInstance()
+	c.set(year, month, dayOfMonth)
+	return c.getTimeInMillis()
+}
+
+fun Long.toDate(): MyDate {
+	val c = Calendar.getInstance()
+	c.setTimeInMillis(this)
+	return MyDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE))
+}

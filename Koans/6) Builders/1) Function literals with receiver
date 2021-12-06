@@ -1,0 +1,10 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Builders/Function%20literals%20with%20receiver/Task.kt
+
+fun task(): List<Boolean> {
+    val isEven: Int.() -> Boolean = { this % 2 == 0 }
+    val isOdd: Int.() -> Boolean = { this % 2 != 0 }
+
+    return listOf(42.isOdd(), 239.isOdd(), 294823098.isEven())
+}

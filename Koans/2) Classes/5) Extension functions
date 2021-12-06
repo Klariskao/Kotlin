@@ -1,0 +1,9 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Classes/Extension%20functions/Task.kt
+
+fun Int.r(): RationalNumber = RationalNumber(this, 1)
+
+fun Pair<Int, Int>.r(): RationalNumber = RationalNumber(first, second)
+
+data class RationalNumber(val numerator: Int, val denominator: Int)

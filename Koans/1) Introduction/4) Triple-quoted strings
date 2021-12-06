@@ -1,0 +1,14 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Introduction/Triple-quoted%20strings/Task.kt
+
+const val question = "life, the universe, and everything"
+const val answer = 42
+
+val tripleQuotedString = """
+    #question = "$question"
+    #answer = $answer""".trimMargin("#")
+
+fun main() {
+    println(tripleQuotedString)
+}

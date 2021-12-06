@@ -1,0 +1,6 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Introduction/Lambdas/Task.kt
+
+fun containsEven(collection: Collection<Int>): Boolean =
+        collection.any { n -> n % 2 == 0 }

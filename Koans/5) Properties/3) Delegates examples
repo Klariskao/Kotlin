@@ -1,0 +1,7 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Properties/Delegates%20examples/Task.kt
+
+class LazyProperty(val initializer: () -> Int) {
+    val lazyValue: Int by lazy(initializer)
+}

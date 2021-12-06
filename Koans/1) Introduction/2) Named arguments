@@ -1,0 +1,6 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Introduction/Named%20arguments/Task.kt
+
+fun joinOptions(options: Collection<String>) =
+        options.joinToString(", ", "[", "]")

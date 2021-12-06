@@ -1,0 +1,11 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Builders/Builders%20how%20it%20works/Task.kt
+
+import Answer.*
+
+enum class Answer { a, b, c }
+
+val answers = mapOf<Int, Answer?>(
+        1 to Answer.c, 2 to Answer.b, 3 to Answer.b, 4 to Answer.c
+)

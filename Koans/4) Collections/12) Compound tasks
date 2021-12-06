@@ -1,0 +1,40 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Collections/Compound%20tasks/Task.kt
+
+// Find the most expensive product among all the delivered products
+// ordered by the customer. Use `Order.isDelivered` flag.
+fun findMostExpensiveProductBy(customer: Customer): Product? {
+    return customer.orders.filter { it.isDelivered }
+        .flatMap { it.products }
+        .maxByOrNull(Product::price)
+}
+
+// Count the amount of times a product was ordered.
+// Note that a customer may order the same product several times.
+fun Shop.getNumberOfTimesProductWasOrdered(product: Product): Int {
+    return customers.flatMap { it.orders }
+        .flatMap { it.products }
+        .count{ it ==product }
+}
+
+fun Customer.getOrderedProducts(): List<Product> =
+        orders.flatMap(Order::products)
+
+// Shop.kt
+
+data class Shop(val name: String, val customers: List<Customer>)
+
+data class Customer(val name: String, val city: City, val orders: List<Order>) {
+	override fun toString() = "$name from ${city.name}"
+}
+
+data class Order(val products: List<Product>, val isDelivered: Boolean)
+
+data class Product(val name: String, val price: Double) {
+	override fun toString() = "'$name' for $price"
+}
+
+data class City(val name: String) {
+	override fun toString() = name
+}

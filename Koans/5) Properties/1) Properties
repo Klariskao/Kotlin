@@ -1,0 +1,12 @@
+// Solution for Kotlin Koans
+// Found at:
+// https://play.kotlinlang.org/koans/Properties/Properties/Task.kt
+
+class PropertyExample() {
+    var counter = 0
+    var propertyWithCounter: Int? = null
+        set(propertyWithCounter) {
+            field = propertyWithCounter
+            counter++
+        } 
+}
